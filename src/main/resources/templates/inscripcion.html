@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <title>Inscripcion</title>
+  <link rel="stylesheet" href="../static/css/login.css">
+  <link rel="stylesheet" th:href="@{/css/login.css}">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+</head>
+
+<body>
+
+  <nav>
+    <div class="container-fuid">
+        <nav class="navbar navbar-expand-lg bg-body-secondary ">
+            <div class="container-fluid">
+                <a class="navbar-brand fs-3 fw-bold text-primary " href="#">EstudiaYa!</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse justify-content-end " id="navbarNav">
+                    <ul class="navbar-nav fs-5 fw-medium ">
+                        <li class="nav-item">
+                            <a class="nav-link active" th:href="@{/inicio}">Inicio</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" th:href="@{/cursos}">Nuestros cursos</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" th:href="@{/inicio}">Sobre nosotros</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" th:href="@{/inicio}">Matricula</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" th:href="@{/login}">Iniciar sesión</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </div>
+</nav>
+
+  <section class="form-login">
+    <form th:action="@{/curso/inscripcion-curso}" th:object="${inscripcion}" method="post">
+      <h5>Inscripción</h5>
+      <input th:value="${dni}" class="controls" type="text" name="dni" placeholder="Dni">
+      <select class="controls" th:field="*{curso}">
+        <option th:each="curso : ${cursos}" 
+                th:value="${curso.idCurso}" 
+                th:text="${curso.nombre}">
+        </option>
+      </select>
+      <input class="buttons" type="submit" value="Inscriberme">
+    </form>
+  </section>
+
+
+
+
+  <footer>
+    <div class="container-fluid bg-dark text-white fs-4 p-5 mt-5">
+        <div class="row ">
+            <div class="col">
+                <p class="text-center">Todos los derechos reservados <strong>Sumag-Academia </strong>2023</p>
+                <p class="text-center">Autor <strong>Luis & Stalin</strong></p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
